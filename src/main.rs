@@ -65,8 +65,14 @@ impl Database {
     fn flush(self) -> std::io::Result<()> {
         let mut contents = String::new();
         for (key, value) in &self.map {
-            let chunk = format!("{}{KVSTORE_DELIMITER}{}\n", key, value);
-            contents.push_str(&chunk);
+            // let chunk = format!("{}{KVSTORE_DELIMITER}{}\n", key, value);
+            // contents.push_str(&chunk);
+
+            // trying not to use a String to make it more efficient
+            contents.push_str(key);
+            contents.push_str(KVSTORE_DELIMITER);
+            contents.push_str(value);
+            contents.push('\n');
         }
         write(self.db, contents)
     }
