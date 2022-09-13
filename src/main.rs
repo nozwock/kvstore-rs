@@ -22,6 +22,7 @@ fn main() {
     let chunk = format!("{}{KVSTORE_DELIMITER}{}\n", key, value);
 }
 
+// A simple UTF-8 kv database.
 struct Database {
     map: HashMap<String, String>,
     db: String,
@@ -35,6 +36,7 @@ impl Database {
             map: HashMap::new(),
             db,
         };
+        // umm, currently does not create the db file if not available...hehe
         let content = read_to_string(&kvstore.db)?;
         for line in content.lines() {
             let (key, value) = line.split_once(KVSTORE_DELIMITER).unwrap();
@@ -46,6 +48,8 @@ impl Database {
         }
         Ok(kvstore)
     }
-    fn write() {}
-    fn read() {}
+    // to insert a kv pair in the database
+    fn insert() {}
+    // to fetch the value for the given key from the database
+    fn get() {}
 }
