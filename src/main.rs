@@ -43,13 +43,11 @@ impl Database {
         for line in contents.lines() {
             let (key, value) = line.split_once(KVSTORE_DELIMITER).unwrap();
             // populating the database
-            kvstore
-                .map
-                .insert(key.to_owned(), value.to_owned())
-                .unwrap();
+            kvstore.map.insert(key.to_owned(), value.to_owned()); // ignore the Option<>
         }
         Ok(kvstore)
     }
+
     // insert() method to insert a kv pair in the database
     fn insert(&mut self, key: String, value: String) {
         self.map.insert(key, value);
