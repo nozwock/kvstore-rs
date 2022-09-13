@@ -6,8 +6,6 @@ const DB_NAME: &str = "kvstore.db";
 const KVSTORE_DELIMITER: &str = " -> ";
 
 fn main() {
-    const valid_cmds: (&str, &str) = ("set", "get");
-
     // accessing the args
     let mut cli_args = std::env::args().skip(1);
     println!("{:?}", cli_args);
@@ -23,8 +21,7 @@ fn main() {
     // intializing the database
     let mut kvstore = Database::new(DB_NAME).unwrap();
     kvstore.insert(key, value);
-    // writes to the file and rids of the database
-    kvstore.flush().unwrap();
+    kvstore.flush().unwrap(); // writes to the file and rids of the database (goes out of scope)
 }
 
 // A simple UTF-8 kv database.

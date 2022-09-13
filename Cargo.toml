@@ -7,3 +7,5 @@ edition = "2021"
 
 [dependencies]
 colored = "2"
+clap = "3.2.21"
+rustyline = "10.0.0"
