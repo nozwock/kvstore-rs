@@ -1,5 +1,4 @@
 use clap::{Parser, Subcommand};
-// use colored::*;
 use lib::kv_store::*;
 
 pub mod lib;
@@ -47,11 +46,7 @@ fn main() {
 
     match &cli.command {
         Commands::Add { key, value } => {
-            // println!(
-            //     "DEBUG\n-----\n{}{KVSTORE_DELIMITER}{}",
-            //     key.bright_yellow(),
-            //     value.bright_cyan()
-            // );
+            // println!("DEBUG\n-----\n{}{KVSTORE_DELIMITER}{}", key, value,);
 
             kvstore.insert(key.to_string(), value.to_string());
         }
