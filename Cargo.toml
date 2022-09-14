@@ -1,5 +1,5 @@
 [package]
-name = "kvstore"
+name = "kvstore-rs"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,5 +7,5 @@ edition = "2021"
 
 [dependencies]
 colored = "2"
-clap = { version = "3.2.21", features = ["derive"] }
+clap = { version = "3.2", features = ["derive"] }
 # rustyline = "10.0.0"

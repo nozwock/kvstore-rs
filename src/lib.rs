@@ -59,8 +59,11 @@ pub mod kv_store {
         }
 
         // to fetch the value for the given key from the database
-        fn get() {
-            todo!();
+        pub fn get(&self, key: String) -> Option<String> {
+            match self.map.get(&key) {
+                Some(value) => Some(value.to_owned()),
+                None => None,
+            }
         }
     }
 }

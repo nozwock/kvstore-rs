@@ -53,9 +53,10 @@ fn main() {
 
             kvstore.insert(key.to_string(), value.to_string());
         }
-        Commands::Get { key } => {
-            todo!()
-        }
+        Commands::Get { key } => match kvstore.get(key.to_string()) {
+            Some(value) => println!("{}", value),
+            None => println!("Key does not exists!"),
+        },
     }
     kvstore.flush().unwrap();
 }
