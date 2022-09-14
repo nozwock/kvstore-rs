@@ -21,7 +21,7 @@ SUBCOMMANDS:
 ```
 
 ---
-Just me messing around with rust >.< 🦀
+Just me messing around with rust >.<  🦀
 
 
 ## Builds
@@ -48,3 +48,8 @@ This is how builds for this project are made at the moment.
         ```console
         cross build --release --target x86_64-pc-windows-gnu
         ```
+
+### Resources :books:
+
+- [Taking Rust everywhere with rustup](https://blog.rust-lang.org/2016/05/13/rustup.html)
+- [min-sized-rust](https://github.com/johnthagen/min-sized-rust)
