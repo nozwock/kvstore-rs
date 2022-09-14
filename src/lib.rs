@@ -7,7 +7,7 @@ pub mod kv_store {
 
     // A simple UTF-8 kv database.
     pub struct Database {
-        map: HashMap<String, String>,
+        pub map: HashMap<String, String>,
         path: String,
     }
 

@@ -28,6 +28,8 @@ enum Commands {
         #[clap(value_parser)]
         key: String,
     },
+    /// lists all kvpairs in the database
+    List,
 }
 
 fn main() {
@@ -57,6 +59,9 @@ fn main() {
             Some(value) => println!("{}", value),
             None => println!("Key does not exists!"),
         },
+        Commands::List => {
+            println!("{:#?}", kvstore.map);
+        }
     }
     kvstore.flush().unwrap();
 }
