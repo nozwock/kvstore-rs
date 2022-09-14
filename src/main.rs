@@ -46,7 +46,7 @@ fn main() {
     match &cli.command {
         Commands::Add { key, value } => {
             println!(
-                "{}{KVSTORE_DELIMITER}{}",
+                "DEBUG\n-----\n{}{KVSTORE_DELIMITER}{}",
                 key.bright_yellow(),
                 value.bright_cyan()
             );

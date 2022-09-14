@@ -17,10 +17,17 @@ pub mod kv_store {
         pub fn new(path: &str) -> std::io::Result<Database> {
             let mut kvstore = Database {
                 map: HashMap::new(),
-                path: path.to_owned(),
+                path: path.to_string(),
             };
             // umm, currently does not create the db file if not available...hehe
-            let contents = fs::read_to_string(&kvstore.path)?;
+            let contents = match fs::read_to_string(&kvstore.path) {
+                Ok(contents) => contents,
+                Err(_) => {
+                    let _ = fs::File::create(path).unwrap();
+                    return Ok(kvstore);
+                }
+            };
+
             for line in contents.lines() {
                 let chunk = line
                     .split(KVSTORE_DELIMITER)
