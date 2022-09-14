@@ -6,7 +6,7 @@ A simple CLI program which stores key-value pairs in a file.
 kvstore-rs 0.1.0
 
 USAGE:
-    kvstore-rs.amd64 <SUBCOMMAND>
+    kvstore-rs <SUBCOMMAND>
 
 OPTIONS:
     -h, --help       Print help information
