@@ -14,7 +14,7 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
-    /// Add kvpairs to the database
+    /// add the key-value pair to the database
     Add {
         #[clap(value_parser)]
         key: String,
@@ -22,13 +22,18 @@ enum Commands {
         #[clap(value_parser)]
         value: String,
     },
-    /// Gives back value corresponding to the given key
+    /// return the value corresponding to the given key
     Get {
         #[clap(value_parser)]
         key: String,
     },
-    /// lists all kvpairs in the database
+    /// lists all key-value pairs in the database
     List,
+    /// remove the key-value pair from the database
+    Remove {
+        #[clap(value_parser)]
+        key: String,
+    },
 }
 
 fn main() {
@@ -57,6 +62,10 @@ fn main() {
         Commands::List => {
             println!("{:#?}", kvstore.map);
         }
+        Commands::Remove { key } => match kvstore.remove(key) {
+            Some(value) => println!("Successfully removed {}{KVSTORE_DELIMITER}{}", key, value),
+            None => println!("Key does not exists!"),
+        },
     }
     kvstore.flush().unwrap();
 }

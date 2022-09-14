@@ -72,5 +72,9 @@ pub mod kv_store {
                 None => None,
             }
         }
+
+        pub fn remove(&mut self, key: &String) -> Option<String> {
+            self.map.remove(key)
+        }
     }
 }
