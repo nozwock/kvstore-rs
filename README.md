@@ -23,3 +23,28 @@ SUBCOMMANDS:
 ---
 Just me messing around with rust >.< 🦀
 
+
+## Builds
+
+This is how builds for this project are made at the moment.
+
+### Linux
+
+- Using `x86_64-unknown-linux-musl` build target
+    ```console
+    rustup install x86_64-unknown-linux-musl
+    cargo build --release --target=x86_64-unknown-linux-musl
+    ```
+- Using UPX to make an even more compact binary
+    ```console
+    upx --best --lzma <executable>
+    ```
+
+### Windows
+
+- Using `x86_64-pc-windows-gnu` build target
+    1. First of all, install [cross](https://github.com/cross-rs/cross)
+    2. Build using cross
+        ```console
+        cross build --release --target x86_64-pc-windows-gnu
+        ```
