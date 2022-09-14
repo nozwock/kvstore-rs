@@ -1,4 +1,5 @@
 use clap::{Parser, Subcommand};
+use colored::*;
 use lib::kv_store::*;
 
 pub mod lib;
@@ -51,20 +52,27 @@ fn main() {
 
     match &cli.command {
         Commands::Add { key, value } => {
-            // println!("DEBUG\n-----\n{}{KVSTORE_DELIMITER}{}", key, value,);
-
             kvstore.insert(key.to_string(), value.to_string());
+            println!(
+                "{}\n{}",
+                "=> Adding to database".bright_yellow(),
+                format!("+ `{}{KVSTORE_DELIMITER}{}`", key, value).bright_green()
+            );
         }
         Commands::Get { key } => match kvstore.get(key.to_string()) {
             Some(value) => println!("{}", value),
-            None => println!("Key does not exists!"),
+            None => println!("{}", "✗ Key does not exists!".bright_red()),
         },
         Commands::List => {
             println!("{:#?}", kvstore.map);
         }
         Commands::Remove { key } => match kvstore.remove(key) {
-            Some(value) => println!("Successfully removed {}{KVSTORE_DELIMITER}{}", key, value),
-            None => println!("Key does not exists!"),
+            Some(value) => println!(
+                "{}\n{}",
+                "=> Removing from database".bright_yellow(),
+                format!("- `{}{KVSTORE_DELIMITER}{}`", key, value).bright_red()
+            ),
+            None => println!("{}", "✗ Key does not exists!".bright_red()),
         },
     }
     kvstore.flush().unwrap();

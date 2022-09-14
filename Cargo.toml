@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "3.2", features = ["derive"] }
-# colored = "2"
+colored = "2"
 # rustyline = "10.0.0"
 
 [profile.release]
