@@ -24,11 +24,11 @@ SUBCOMMANDS:
 Just me messing around with rust >.<  🦀
 
 
-## Builds
+## 🏗️ Builds
 
 This is how builds for this project are made at the moment.
 
-### Linux
+### :penguin: Linux
 
 - Using `x86_64-unknown-linux-musl` build target
     ```console
@@ -40,7 +40,7 @@ This is how builds for this project are made at the moment.
     upx --best --lzma <executable>
     ```
 
-### Windows
+### :toilet: Windows
 
 - Using `x86_64-pc-windows-gnu` build target
     1. First of all, install [cross](https://github.com/cross-rs/cross)
@@ -49,7 +49,7 @@ This is how builds for this project are made at the moment.
         cross build --release --target x86_64-pc-windows-gnu
         ```
 
-### Resources :books:
+### :books: Resources
 
 - [Taking Rust everywhere with rustup](https://blog.rust-lang.org/2016/05/13/rustup.html)
 - [min-sized-rust](https://github.com/johnthagen/min-sized-rust)
