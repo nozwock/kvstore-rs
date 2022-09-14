@@ -20,4 +20,5 @@ SUBCOMMANDS:
 ```
 
 ---
-Just messing around with rust >.<
+Just me messing around with rust >.< 🦀
+
