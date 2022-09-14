@@ -1,13 +1,37 @@
+use clap::{Parser, Subcommand};
 use colored::*;
 use lib::kv_store::*;
-use rustyline::Editor;
 
 pub mod lib;
 
 const DB_PATH: &str = "kvstore.db";
 
-fn main() -> rustyline::Result<()> {
-    // accessing the args
+#[derive(Parser)]
+#[clap(version)]
+struct Cli {
+    #[clap(subcommand)]
+    command: Commands,
+}
+
+#[derive(Subcommand)]
+enum Commands {
+    // Add kvpairs to the database
+    Add {
+        #[clap(value_parser)]
+        key: String,
+
+        #[clap(value_parser)]
+        value: String,
+    },
+    // Gives back value corresponding to the given key
+    Get {
+        #[clap(value_parser)]
+        key: String,
+    },
+}
+
+fn main() {
+    // // accessing the args
     // let mut cli_args = std::env::args().skip(1);
     // println!("{:?}", cli_args);
     // let key = cli_args.next().unwrap();
@@ -16,26 +40,22 @@ fn main() -> rustyline::Result<()> {
     // intializing the database
     let mut kvstore = Database::new(DB_PATH).expect("Failed to initialize the database");
 
-    // using rustyline
-    let mut rl = Editor::<()>::new()?;
-    loop {
-        let line = rl.readline(">> ")?;
-        if line.as_str() == "quit" {
-            kvstore.flush().unwrap();
-            break;
+    // using clap
+    let cli = Cli::parse();
+
+    match &cli.command {
+        Commands::Add { key, value } => {
+            println!(
+                "{}{KVSTORE_DELIMITER}{}",
+                key.bright_yellow(),
+                value.bright_cyan()
+            );
+
+            kvstore.insert(key.to_string(), value.to_string());
         }
-
-        let mut chunks = line.split_ascii_whitespace();
-        let command = &chunks.next().unwrap();
-        let key = &chunks.next().unwrap();
-        let value = &chunks.next().unwrap();
-
-        println!(
-            "{}{KVSTORE_DELIMITER}{}",
-            key.bright_yellow(),
-            value.bright_cyan()
-        );
-        kvstore.insert(key.to_string(), value.to_string());
+        Commands::Get { key } => {
+            todo!()
+        }
     }
-    Ok(())
+    kvstore.flush().unwrap();
 }
