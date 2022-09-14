@@ -15,7 +15,7 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
-    // Add kvpairs to the database
+    /// Add kvpairs to the database
     Add {
         #[clap(value_parser)]
         key: String,
@@ -23,7 +23,7 @@ enum Commands {
         #[clap(value_parser)]
         value: String,
     },
-    // Gives back value corresponding to the given key
+    /// Gives back value corresponding to the given key
     Get {
         #[clap(value_parser)]
         key: String,
