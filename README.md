@@ -35,10 +35,6 @@ This is how builds for this project are made at the moment.
     rustup install x86_64-unknown-linux-musl
     cargo build --release --target=x86_64-unknown-linux-musl
     ```
-- Using UPX to make an even more compact binary
-    ```console
-    upx --best --lzma <executable>
-    ```
 
 ### :toilet: Windows
 
@@ -49,7 +45,13 @@ This is how builds for this project are made at the moment.
         cross build --release --target x86_64-pc-windows-gnu
         ```
 
+
 ### :books: Resources
 
 - [Taking Rust everywhere with rustup](https://blog.rust-lang.org/2016/05/13/rustup.html)
 - [min-sized-rust](https://github.com/johnthagen/min-sized-rust)
+
+- **Note:** Using UPX to make an even more compact binary
+    ```console
+    upx --best --lzma <executable>
+    ```
