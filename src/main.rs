@@ -8,6 +8,7 @@ const DB_PATH: &str = "kvstore.db";
 
 #[derive(Parser)]
 #[clap(version)]
+#[clap(about = "Simple CLI program which stores key-value pairs in a file")]
 struct Cli {
     #[clap(subcommand)]
     command: Commands,
@@ -44,11 +45,11 @@ fn main() {
     // let key = cli_args.next().unwrap();
     // let value = cli_args.next().unwrap();
 
-    // intializing the database
-    let mut kvstore = Database::new(DB_PATH).expect("Failed to initialize the database");
-
     // using clap
     let cli = Cli::parse();
+
+    // intializing the database
+    let mut kvstore = Database::new(DB_PATH).expect("Failed to initialize the database");
 
     match &cli.command {
         Commands::Add { key, value } => {
