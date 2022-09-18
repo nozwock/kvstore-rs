@@ -31,11 +31,15 @@ This is how builds for this project are made at the moment.
 
 ### [just](https://github.com/casey/just) command runner
 Switching to `just` just to automate these build proc a lil.
+- just run :grin:
+    ```sh
+    just
+    ```
 
 ### :penguin: Linux
 
 - Using `x86_64-unknown-linux-musl` build target
-    ```console
+    ```sh
     rustup install x86_64-unknown-linux-musl
     cargo build --release --target=x86_64-unknown-linux-musl
     ```
@@ -45,7 +49,7 @@ Switching to `just` just to automate these build proc a lil.
 - Using `x86_64-pc-windows-gnu` build target
     1. First of all, install [cross](https://github.com/cross-rs/cross)
     2. Build using cross
-        ```console
+        ```sh
         cross build --release --target x86_64-pc-windows-gnu
         ```
 
@@ -56,6 +60,6 @@ Switching to `just` just to automate these build proc a lil.
 - [min-sized-rust](https://github.com/johnthagen/min-sized-rust)
 
 - **Note:** Using UPX to make an even more compact binary
-    ```console
+    ```sh
     upx --best --lzma <executable>
     ```
