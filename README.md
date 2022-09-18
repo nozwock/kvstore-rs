@@ -1,6 +1,6 @@
 # kvstore-rs
 
-A simple CLI program which stores key-value pairs in a file.
+Simple CLI program which stores key-value pairs in a file.
 
 ```console
 kvstore-rs 0.2.0
