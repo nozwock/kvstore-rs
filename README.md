@@ -4,6 +4,7 @@ Simple CLI program which stores key-value pairs in a file.
 
 ```console
 kvstore-rs 0.2.0
+Simple CLI program which stores key-value pairs in a file
 
 USAGE:
     kvstore-rs <SUBCOMMAND>
@@ -27,6 +28,9 @@ Just me messing around with rust >.<  🦀
 ## 🏗️ Builds
 
 This is how builds for this project are made at the moment.
+
+### [just](https://github.com/casey/just) command runner
+Switching to `just` just to automate these build proc a lil.
 
 ### :penguin: Linux
 
