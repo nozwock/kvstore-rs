@@ -3,7 +3,7 @@
 Simple CLI program which stores key-value pairs in a file.
 
 ```console
-kvstore-rs 0.2.0
+kvstore-rs 0.2.1
 Simple CLI program which stores key-value pairs in a file
 
 USAGE:
