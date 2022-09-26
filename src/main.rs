@@ -2,7 +2,7 @@ use clap::{Parser, Subcommand};
 use colored::*;
 use lib::kv_store::*;
 
-pub mod lib;
+mod lib;
 
 const DB_PATH: &str = "kvstore.db";
 

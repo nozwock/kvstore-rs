@@ -38,7 +38,7 @@ pub mod kv_store {
                     .map
                     .insert(chunk[0].to_string(), chunk[1].to_string()); // ignore the Option<>
             }
-            Ok(kvstore)
+            return Ok(kvstore);
         }
 
         // insert() method to insert a kv pair in the database
@@ -62,7 +62,7 @@ pub mod kv_store {
                 contents.push_str(value);
                 contents.push('\n');
             }
-            fs::write(self.path, contents)
+            return fs::write(self.path, contents);
         }
 
         // to fetch the value for the given key from the database
@@ -74,7 +74,7 @@ pub mod kv_store {
         }
 
         pub fn remove(&mut self, key: &String) -> Option<String> {
-            self.map.remove(key)
+            return self.map.remove(key);
         }
     }
 }
